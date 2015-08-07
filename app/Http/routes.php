@@ -11,6 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('trips', 'TripsController@index' );
+Route::get('trip/{id}', 'TripsController@show');
+
