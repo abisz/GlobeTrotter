@@ -1,0 +1,49 @@
+body{
+    background-color: #fbffe7;
+
+}
+
+header{
+    height: 150px;
+    padding:2rem;
+}
+
+.logo img{
+    height:100px;
+    float:left;
+
+}
+
+.user{
+    float:right;
+}
+
+.user img{
+    float:right;
+    border-radius: 50%;
+    height:100px;
+}
+
+.user .name{
+    float:right;
+    margin-left:2em;
+    padding: 3em 0;
+}
+
+.header-trip, .header-map{
+    background-size: 100%;
+    height:400px;
+}
+
+.header-map{
+    background-color: ghostwhite;
+}
+
+.trip, .entry{
+    height:300px;
+    width:300px;
+    background-color:ghostwhite;
+    float:left;
+    margin: 2em 2em 0 0;
+}
+
