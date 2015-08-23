@@ -10,6 +10,7 @@ class Picture extends Model
         'trip_entry_id',
         'title',
         'desc',
+        'filename',
     ];
 
     /**

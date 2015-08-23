@@ -13,7 +13,8 @@
 
     @if( Auth::check() && Auth::user()->id == $trip->user_id)
         <a class="btn btn-default" href="{{url('trip') . '/' . $trip->id . '/edit'}}">Edit Trip</a>
-        <a href="{{url('entry/create')}}">
+        <a class="btn btn-danger" href="{{url('trip') . '/' . $trip->id . '/delete'}}">Delete Trip</a>
+        <a href="{{url('trip').'/'.$trip->id.'/entry/create'}}">
             <div class="entry">
                 <h3>Add new Entry!</h3>
             </div>
@@ -22,7 +23,7 @@
 
     @foreach($entries as $entry)
 
-        <a href="{{ url('entry') . '/' . $entry->id }}">
+        <a href="{{ url('trip').'/'.$trip->id.'/entry'.'/' . $entry->id }}">
             <div class="entry">
                 <h3>{{$entry->name}}</h3>
                 <p>{{$entry->desc}}</p>

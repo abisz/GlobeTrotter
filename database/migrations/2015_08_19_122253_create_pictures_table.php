@@ -16,6 +16,7 @@ class CreatePicturesTable extends Migration
             $table->increments('id');
             $table->integer('trip_entry_id')->unsigned();
             $table->string('title');
+            $table->string('filename');
             $table->text('desc');
             $table->timestamps();
 

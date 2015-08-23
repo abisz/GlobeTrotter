@@ -114,6 +114,12 @@ class TripsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $trip = Trip::findOrFail($id);
+        if(Auth::user()->id == $trip->user_id){
+            $trip->delete();
+            return redirect(route('myTrips', Auth::user()->id));
+        }else{
+            return 'You are not authorized to delete this trip!';
+        }
     }
 }

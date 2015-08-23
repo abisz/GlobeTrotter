@@ -2,12 +2,14 @@
 
 @section('content')
 
-    <a href="{{ url('trip') . '/' . $trips[0]->id }}">
-        <div class="header-trip" style="background: url( '{{url('img') . '/' . $trips[0]->pic}} ') no-repeat center center;" >
-            <h2>{{ $trips[0]->name }}</h2>
-            <p>{{ $trips[0]->desc }}</p>
-        </div>
-    </a>
+    @if (!$trips->isEmpty())
+        <a href="{{ url('trip') . '/' . $trips[0]->id }}">
+            <div class="header-trip" style="background: url( '{{url('img') . '/' . $trips[0]->pic}} ') no-repeat center center;" >
+                <h2>{{ $trips[0]->name }}</h2>
+                <p>{{ $trips[0]->desc }}</p>
+            </div>
+        </a>
+    @endif
 
     @if( Auth::check() && Auth::user()->id == $user_id)
         <a href="{{url('trip/create')}}">

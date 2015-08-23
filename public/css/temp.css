@@ -39,7 +39,7 @@ header{
     background-color: ghostwhite;
 }
 
-.trip, .entry{
+.trip, .entry, .picture{
     height:300px;
     width:300px;
     background-color:ghostwhite;
@@ -47,3 +47,16 @@ header{
     margin: 2em 2em 0 0;
 }
 
+.picture-single{
+    margin:0 auto;
+    display:block;
+    max-width:80%;
+    height:auto;
+}
+
+.picture-edit{
+    margin:0 auto;
+    display:block;
+    max-width: 500px;
+    height:auto;
+}
