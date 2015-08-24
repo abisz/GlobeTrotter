@@ -15,6 +15,18 @@
     {!! Form::file('image', null, ['class' => 'form-control']) !!}
 </div>
 
+<!-- Featured:Entry Form Checkbox -->
+<div class="form-group">
+    {!! Form::label('featuredEntry', 'Featured Picture for this Entry:') !!}
+    {!! Form::checkbox('featuredEntry', null, $entryChecked) !!}
+</div>
+
+<!-- Featured:Trip Form Checkbox -->
+<div class="form-group">
+    {!! Form::label('featuredTrip', 'Featured Picture for this Trip:') !!}
+    {!! Form::checkbox('featuredTrip', null, $tripChecked) !!}
+</div>
+
 <!-- Add Picture Form Input -->
 <div class="form-group">
     {!! Form::submit($submitButtonText, ['class' => 'btn btn-primary form-control']) !!}

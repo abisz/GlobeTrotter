@@ -24,7 +24,7 @@
     @foreach($entries as $entry)
 
         <a href="{{ url('trip').'/'.$trip->id.'/entry'.'/' . $entry->id }}">
-            <div class="entry">
+            <div class="entry" style="background: url( '{{url('img') . '/' . $trip->user_id . '/' . $entry->picName}} ') no-repeat center center;">
                 <h3>{{$entry->name}}</h3>
                 <p>{{$entry->desc}}</p>
             </div>

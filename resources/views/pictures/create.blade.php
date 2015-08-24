@@ -8,7 +8,7 @@
 
     {!! Form::open(['files'=>true]) !!}
 
-    @include('pictures.form', ['submitButtonText' => 'Save Picture'])
+    @include('pictures.form', ['submitButtonText' => 'Save Picture', 'entryChecked' => false, 'tripChecked' => false])
 
     {!! Form::close() !!}
 

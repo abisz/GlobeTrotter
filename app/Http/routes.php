@@ -22,8 +22,6 @@
  *  Header functionality + user options
  *      user pic validation for jpg (or another approach)
  *      dropdown menu for name
- *  pictures
- *      check if should be featured (entry or trip)
  *  homepage + example trips
  *  design
  *  confirmation of deleting (popup?)

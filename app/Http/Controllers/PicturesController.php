@@ -77,7 +77,18 @@ class PicturesController extends Controller
             unset($newPicture->image);
             $newPicture['trip_entry_id'] = $entry_id;
             $newPicture['filename'] = $filename;
-            Picture::create($newPicture);
+            $pic = Picture::create($newPicture);
+
+            //check for checkboxes if picture should be featured somewhere
+            if(Input::has('featuredEntry')){
+                $entry->pic = $pic->id;
+                $entry->save();
+            }
+            if(Input::has('featuredTrip')){
+                $trip->pic = $pic->id;
+                $trip->save();
+            }
+
             return redirect(url('trip/'.$trip->id.'/entry/'.$entry_id));
 
         }else{
@@ -138,7 +149,6 @@ class PicturesController extends Controller
         $user = Auth::user();
         $trip = Trip::findOrFail($trip_id);
         $entry = TripEntry::findOrFail($entry_id);
-        $pic = Picture::findOrFail($pic_id);
 
         if($user->id == $trip->user_id && $trip->id == $entry->trip_id) {
 
@@ -147,7 +157,7 @@ class PicturesController extends Controller
             //Checking if user wants to update the picture
             if ($request['image']) {
                 //deleting old image
-                $oldPath = public_path('img').'/'.$user->id.'/'.$pic->filename;
+                $oldPath = public_path('img').'/'.$user->id.'/'.$picture->filename;
                 File::delete($oldPath);
 
                 //modifying and saving new image
@@ -161,6 +171,17 @@ class PicturesController extends Controller
             }
 
             $picture->update($request->all());
+
+            //check for checkboxes if picture should be featured somewhere
+            if(Input::has('featuredEntry')){
+                $entry->pic = $picture->id;
+                $entry->save();
+            }
+            if(Input::has('featuredTrip')){
+                $trip->pic = $picture->id;
+                $trip->save();
+            }
+
             return redirect(url('trip') . '/' . $trip_id . '/entry/' . $entry->id . '/picture/' . $pic_id);
 
         }else{

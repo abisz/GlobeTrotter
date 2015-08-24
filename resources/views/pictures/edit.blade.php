@@ -6,7 +6,7 @@
 
     {!! Form::model($pic, ['files'=>true, 'method' => 'PATCH', 'url' => 'trip/' . $trip->id . '/entry/' . $entry->id .'/picture/'. $pic->id . '/update' ]) !!}
 
-    @include('pictures.form', ['submitButtonText' => 'Update Trip'])
+    @include('pictures.form', ['submitButtonText' => 'Update Picture', 'entryChecked' => false, 'tripChecked' => false])
 
     {!! Form::close() !!}
 

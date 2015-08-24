@@ -17,6 +17,7 @@ class CreateTripEntriesTable extends Migration
             $table->integer('trip_id')->unsigned();
             $table->string('name');
             $table->text('desc');
+            $table->string('pic');
             $table->timestamp('date');
             $table->timestamps();
 

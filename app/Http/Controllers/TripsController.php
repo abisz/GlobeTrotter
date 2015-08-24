@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Picture;
 use App\Trip;
 use App\User;
 use App\Entry;
@@ -24,6 +25,15 @@ class TripsController extends Controller
     {
         $user = User::findOrFail($user_id);
         $trips = $user->trips()->latest('end')->alreadyStarted()->get();
+
+        //retrieving path of featured images
+        foreach($trips as $trip){
+            if($trip['pic']){
+                $pic = Picture::findOrFail($trip['pic']);
+                $trip['picName'] = $pic->filename;
+            }
+        }
+
         return view('trips.myTrips', compact('trips', 'user_id'));
     }
 
@@ -69,8 +79,16 @@ class TripsController extends Controller
     public function show($id)
     {
         $trip = Trip::findOrFail($id);
-
         $entries = $trip->tripEntries()->get();
+
+        //retrieving path of featured images
+        foreach($entries as $entry){
+            if($entry['pic']){
+                $pic = Picture::findOrFail($entry['pic']);
+                $entry['picName'] = $pic->filename;
+            }
+        }
+
         return view('trips.single', compact('trip', 'entries'));
     }
 
