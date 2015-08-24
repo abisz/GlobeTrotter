@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Session;
 
 class PicturesController extends Controller
 {
@@ -181,6 +182,8 @@ class PicturesController extends Controller
                 $trip->pic = $picture->id;
                 $trip->save();
             }
+
+            Session::flash('flash_message', 'Your Picture was successfully updated!');
 
             return redirect(url('trip') . '/' . $trip_id . '/entry/' . $entry->id . '/picture/' . $pic_id);
 

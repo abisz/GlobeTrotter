@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Auth;
+use Illuminate\Support\Facades\Session;
 
 
 class TripsController extends Controller
@@ -121,6 +122,9 @@ class TripsController extends Controller
     {
         $trip = Trip::findOrFail($id);
         $trip->update($request->all());
+
+        Session::flash('flash_message', 'Your Trip was successfully updated!');
+
         return redirect(route('tripDetail',$id));
     }
 

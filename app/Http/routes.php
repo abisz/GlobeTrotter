@@ -20,8 +20,11 @@
  *      communication with laravel and forms
  *      saving location in entries
  *  homepage + example trips
+ *  breadcrumbs
  *  design
- *  confirmation of deleting (popup?)
+ *  if picture is deleted, the entries of featured images have to be updated (Business layer?)
+ *
+ *  !! MVC-Violations !!
  *
  */
 

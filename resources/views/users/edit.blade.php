@@ -12,6 +12,6 @@
 
     @include('errors.list')
 
-    <a class="btn btn-danger" href="{{url('user') . '/' . $user->id . '/delete'}}">Delete Profile</a>
+    <button class="btn btn-danger confirm" data-confirmation="Are you sure you want to delete your profile?" data-toggle="modal" data-target="#modal-confirm" data-path="{{url('user') . '/' . $user->id . '/delete'}}">Delete Profile</button>
 
 @stop

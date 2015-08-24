@@ -10,6 +10,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Session;
 
 class UserController extends Controller
 {
@@ -58,6 +59,8 @@ class UserController extends Controller
         }
 
         $user->update($request->all());
+
+        Session::flash('flash_message', 'Your Profile was successfully updated!');
 
         return redirect(url('user') . '/' . $id );
 

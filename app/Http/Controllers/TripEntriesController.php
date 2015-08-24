@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class TripEntriesController extends Controller
 {
@@ -55,7 +56,7 @@ class TripEntriesController extends Controller
             $input = $request->all();
             $input['trip_id'] = $trip_id;
             $entry = TripEntry::create($input);
-            return redirect(url('trip/'.$trip->id));
+            return redirect(url('trip/'.$trip->id.'/entry/'.$entry->id));
         }else{
             return 'You are not authorized to create an entry for this trip';
         }
@@ -111,6 +112,9 @@ class TripEntriesController extends Controller
     {
         $entry = TripEntry::findOrFail($entry_id);
         $entry->update($request->all());
+        
+        Session::flash('flash_message', 'Your Entry was successfully updated!');
+
         return redirect(url('trip').'/'.$trip_id.'/entry/'.$entry->id);
     }
 

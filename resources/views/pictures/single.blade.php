@@ -10,7 +10,8 @@
 
     @if( Auth::check() && Auth::user()->id == $trip->user_id)
         <a class="btn btn-default" href="{{url('trip') . '/' . $trip->id . '/entry/'.$entry->id.'/picture/'.$pic->id.'/edit'}}">Edit Picture</a>
-        <a class="btn btn-danger" href="{{url('trip') . '/' . $trip->id . '/entry/'.$entry->id.'/picture/'.$pic->id.'/delete'}}">Delete Picture</a>
+
+        <button class="btn btn-danger confirm" data-confirmation="Are you sure you want to delete this picture?" data-toggle="modal" data-target="#modal-confirm" data-path="{{url('trip') . '/' . $trip->id . '/entry/'.$entry->id.'/picture/'.$pic->id.'/delete'}}">Delete Picture</button>
 
     @endif
 
