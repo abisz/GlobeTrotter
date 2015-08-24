@@ -11,13 +11,35 @@
 |
 */
 
+/*
+ *
+ * TO DO:
+ *
+ *  google maps
+ *      implementation
+ *      communication with laravel and forms
+ *      saving location in entries
+ *  Header functionality + user options
+ *      user pic validation for jpg (or another approach)
+ *      dropdown menu for name
+ *  pictures
+ *      check if should be featured (entry or trip)
+ *  homepage + example trips
+ *  design
+ *  confirmation of deleting (popup?)
+ *
+ */
+
 Route::controllers([
     'auth' => 'Auth\AuthController',
     'password' => 'Auth\PasswordController',
 ]);
 
-//myTrips:
+//User:
 Route::get('user/{user_id}', ['uses' => 'TripsController@showAllTrips', 'as' => 'myTrips'])->where('user_id', '[0-9]+');
+Route::get('user/{user_id}/edit', ['uses' => 'UserController@edit', 'middleware' => 'auth'])->where('user_id', '[0-9]+');
+Route::patch('user/{user_id}/update', ['uses' => 'UserController@update'])->where('user_id', '[0-9]+');
+Route::get('user/{user_id}/delete', ['uses' => 'UserController@destroy', 'middleware' => 'auth'])->where('user_id', '[0-9]+');
 
 //Trips:
 Route::get('trip/{trip_id}', ['uses' => 'TripsController@show', 'as' => 'tripDetail'])->where('trip_id', '[0-9]+');
@@ -42,3 +64,8 @@ Route::get('trip/{trip_id}/entry/{entry_id}/picture/{pic_id}', ['uses' => 'Pictu
 Route::get('trip/{trip_id}/entry/{entry_id}/picture/{pic_id}/edit', ['uses' => 'PicturesController@edit', 'middleware' => 'auth'])->where(['trip_id' => '[0-9]+', 'entry_id' => '[0-9]+', 'pic_id' => '[0-9]+']);
 Route::patch('trip/{trip_id}/entry/{entry_id}/picture/{pic_id}/update', ['uses' => 'PicturesController@update', 'middleware' => 'auth'])->where(['trip_id' => '[0-9]+', 'entry_id' => '[0-9]+', 'pic_id' => '[0-9]+']);
 Route::get('trip/{trip_id}/entry/{entry_id}/picture/{pic_id}/delete', ['uses' => 'PicturesController@destroy', 'middleware' => 'auth'])->where(['trip_id' => '[0-9]+', 'entry_id' => '[0-9]+', 'pic_id' => '[0-9]+']);
+
+//homepage
+Route::get('', function(){
+    return view('app');
+});

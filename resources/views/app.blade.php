@@ -12,13 +12,19 @@
 
 <div class="container">
     <header>
-        <div class="logo">
-            <img src="<?php echo url('img/logo.svg') ?>" alt="Globetrotter Logo"/>
-        </div>
+        <a href="{{url('/')}}">
+            <div class="logo">
+                <img src="<?php echo url('img/logo.svg') ?>" alt="Globetrotter Logo"/>
+            </div>
+        </a>
         <div class="user">
             @if (Auth::check())
-                <p class="name">Simon Reinsperger</p>
-                <img src="<?php echo url('img/profilePic.jpg') ?>" alt="profile Picture"/>
+                <a href="{{url('user')}}/{{Auth::user()->id}}/edit">
+                    <p class="name">{{Auth::user()->name}}</p>
+                </a>
+                <a href="{{url('user')}}/{{Auth::user()->id}}">
+                    <img src="{{url('img')}}/{{Auth::user()->id}}/profile-pic.jpg" alt="profile Picture"/>
+                </a>
             @else
                 <a href="{{ url('auth/login')  }}">Login</a>
             @endif

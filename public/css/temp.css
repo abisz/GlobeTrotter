@@ -1,5 +1,5 @@
 body{
-    background-color: #fbffe7;
+    background-color: #fefdf3;
 
 }
 
@@ -22,6 +22,7 @@ header{
     float:right;
     border-radius: 50%;
     height:100px;
+    width:100px;
 }
 
 .user .name{
