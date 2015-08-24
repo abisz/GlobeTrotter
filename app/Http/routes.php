@@ -19,9 +19,6 @@
  *      implementation
  *      communication with laravel and forms
  *      saving location in entries
- *  Header functionality + user options
- *      user pic validation for jpg (or another approach)
- *      dropdown menu for name
  *  homepage + example trips
  *  design
  *  confirmation of deleting (popup?)

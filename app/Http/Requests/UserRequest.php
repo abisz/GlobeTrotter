@@ -26,7 +26,7 @@ class UserRequest extends Request
         return [
             'name' => 'required',
             'email' => 'required|email',
-            'image' => 'image'
+            'image' => 'image|mimes:jpeg'
         ];
     }
 }
