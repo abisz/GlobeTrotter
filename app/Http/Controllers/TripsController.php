@@ -72,8 +72,9 @@ class TripsController extends Controller
     {
         $trip = Trip::findOrFail($id);
         $entries = $trip->getEntriesWithPic();
+        $user_id = $trip->user_id;
 
-        return view('trips.single', compact('trip', 'entries'));
+        return view('trips.single', compact('trip', 'entries', 'user_id'));
     }
 
 

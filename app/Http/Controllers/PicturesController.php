@@ -96,7 +96,9 @@ class PicturesController extends Controller
         $trip = Trip::findOrFail($trip_id);
         $pic = Picture::findOrFail($pic_id);
         $entry = TripEntry::findOrFail($entry_id);
-        return view('pictures.single', compact('pic', 'trip', 'entry'));
+        $user_id = $trip->user_id;
+        $single_pic = true;
+        return view('pictures.single', compact('pic', 'trip', 'entry', 'user_id', 'single_pic'));
     }
 
     /**

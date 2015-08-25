@@ -20,7 +20,6 @@
  *      communication with laravel and forms
  *      saving location in entries
  *  homepage + example trips
- *  breadcrumbs
  *  design
  *
  */

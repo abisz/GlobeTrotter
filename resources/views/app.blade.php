@@ -18,6 +18,8 @@
 
     @include('partials.header')
 
+    @include('partials.breadcrumbs')
+
     @yield('content')
 
 </div>
@@ -37,6 +39,10 @@
     $('#confirm-delete').on('click', function(){
         window.location.href = $('.confirm').data('path');
     });
+
+    //add active class to breadcrumbs and remove a tag
+    $('ol.breadcrumb').children().last().addClass('active');
+    $('li.active a').contents().unwrap();
 
 </script>
 
