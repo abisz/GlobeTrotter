@@ -1,5 +1,5 @@
 
-@if (isset($trip))
+@if (isset($trip) && !Request::is('*/edit') && !Request::is('*/create') )
     <ol class="breadcrumb">
         <li><a href="{{url('user').'/'.$user_id}}">{{\App\User::findOrFail($user_id)->name}}</a></li>
 
