@@ -7,7 +7,7 @@
     <div class="user">
         @if (Auth::check())
             <a href="{{url('user')}}/{{Auth::user()->id}}">
-                @if (File::exists(url('img').'/'.Auth::user()->id.'/profile-pic.jpg'))
+                @if (File::exists('img/'.Auth::user()->id.'/profile-pic.jpg'))
                     <img src="{{url('img')}}/{{Auth::user()->id}}/profile-pic.jpg" alt="profile Picture"/>
                 @else
                     <img src="{{url('img')}}/profile-pic.jpg" alt="profile Picture"/>

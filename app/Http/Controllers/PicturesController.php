@@ -65,29 +65,14 @@ class PicturesController extends Controller
 
         if($user->id == $trip->user_id && $trip->id == $entry->trip_id){
 
-            //modifying and saving image
-            $destinationPath = 'img/'.$user->id;
-            $image = Input::file('image');
-            $extension = $image->getClientOriginalExtension();
-            $filename = uniqid().'.'.$extension;
-
-            $image->move($destinationPath, $filename);
-
-            //creating Pictures entry into db
-            $newPicture = $request->all();
-            unset($newPicture->image);
-            $newPicture['trip_entry_id'] = $entry_id;
-            $newPicture['filename'] = $filename;
-            $pic = Picture::create($newPicture);
+            $pic = Picture::createPicture($request->all(), Input::file('image'), $user->id, $entry_id);
 
             //check for checkboxes if picture should be featured somewhere
             if(Input::has('featuredEntry')){
-                $entry->pic = $pic->id;
-                $entry->save();
+                $entry->setFeaturedImage($pic->id);
             }
             if(Input::has('featuredTrip')){
-                $trip->pic = $pic->id;
-                $trip->save();
+                $trip->setFeaturedImage($pic->id);
             }
 
             return redirect(url('trip/'.$trip->id.'/entry/'.$entry_id));
@@ -153,34 +138,21 @@ class PicturesController extends Controller
 
         if($user->id == $trip->user_id && $trip->id == $entry->trip_id) {
 
-            $picture = Picture::findOrFail($pic_id);
+            $pic = Picture::findOrFail($pic_id);
 
             //Checking if user wants to update the picture
             if ($request['image']) {
-                //deleting old image
-                $oldPath = public_path('img').'/'.$user->id.'/'.$picture->filename;
-                File::delete($oldPath);
-
-                //modifying and saving new image
-                $destinationPath = 'img/' . $user->id;
-                $image = Input::file('image');
-                $extension = $image->getClientOriginalExtension();
-                $filename = uniqid() . '.' . $extension;
-
-                $image->move($destinationPath, $filename);
-                $picture['filename'] = $filename;
+               $pic->saveImage($request['image'], $user->id);
             }
 
-            $picture->update($request->all());
+            $pic->update($request->all());
 
             //check for checkboxes if picture should be featured somewhere
             if(Input::has('featuredEntry')){
-                $entry->pic = $picture->id;
-                $entry->save();
+                $entry->setFeaturedImage($pic->id);
             }
             if(Input::has('featuredTrip')){
-                $trip->pic = $picture->id;
-                $trip->save();
+                $trip->setFeaturedImage($pic->id);
             }
 
             Session::flash('flash_message', 'Your Picture was successfully updated!');
@@ -209,10 +181,8 @@ class PicturesController extends Controller
         $user = Auth::user();
 
         if(Auth::user()->id == $trip->user_id && $trip->id == $entry->trip_id && $pic->trip_entry_id == $entry->id){
-            $pic->delete();
 
-            //deleting image as well
-            File::delete(public_path('img').'/'.$user->id.'/'.$pic->filename);
+            $pic->deleteWithImage($user->id);
 
             return redirect(url('trip') . '/' . $trip_id . '/entry/' . $entry->id );
 

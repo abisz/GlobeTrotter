@@ -43,27 +43,20 @@ class UserController extends Controller
     {
         $user = User::findOrFail($id);
 
+        // update profile pic
         if ($request['image']) {
-            //deleting old image
-            $path = public_path('img').'/'.$user->id.'/profile-pic.jpg';
-            File::delete($path);
-
-            //modifying and saving new image
-            $destinationPath = 'img/' . $user->id;
             $image = Input::file('image');
-            $extension = $image->getClientOriginalExtension();
-            $filename = 'profile-pic.' . $extension;
-
-            $image->move($destinationPath, $filename);
-            $picture['filename'] = $filename;
+            $user->updateProfilePic($image);
         }
 
+        //update user information
         $user->update($request->all());
 
+        //give feedback to user
         Session::flash('flash_message', 'Your Profile was successfully updated!');
 
+        //redirect to myTrips site
         return redirect(url('user') . '/' . $id );
-
 
     }
 
@@ -80,9 +73,8 @@ class UserController extends Controller
         //checking if authenticated user is the user to be destroyed
         if(Auth::user()->id == $id){
 
-            //delete all pics from user
-            $folderPath = public_path('img').'/'.$id;
-            File::deleteDirectory($folderPath);
+            //delete all the pics
+            $user->destroyPics();
 
             //delete user
             $user->delete();

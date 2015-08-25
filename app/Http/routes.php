@@ -22,9 +22,6 @@
  *  homepage + example trips
  *  breadcrumbs
  *  design
- *  if picture is deleted, the entries of featured images have to be updated (Business layer?)
- *
- *  !! MVC-Violations !!
  *
  */
 
@@ -65,5 +62,9 @@ Route::get('trip/{trip_id}/entry/{entry_id}/picture/{pic_id}/delete', ['uses' =>
 
 //homepage
 Route::get('', function(){
+    return view('app');
+});
+
+Route::get('home', function(){
     return view('app');
 });

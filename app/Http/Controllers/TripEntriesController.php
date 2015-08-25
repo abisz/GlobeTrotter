@@ -53,10 +53,10 @@ class TripEntriesController extends Controller
         $trip = Trip::findOrFail($trip_id);
 
         if($trip->user_id == Auth::user()->id){
-            $input = $request->all();
-            $input['trip_id'] = $trip_id;
-            $entry = TripEntry::create($input);
+
+            $entry = TripEntry::createWithTripId($request->all(), $trip_id);
             return redirect(url('trip/'.$trip->id.'/entry/'.$entry->id));
+
         }else{
             return 'You are not authorized to create an entry for this trip';
         }
@@ -112,7 +112,7 @@ class TripEntriesController extends Controller
     {
         $entry = TripEntry::findOrFail($entry_id);
         $entry->update($request->all());
-        
+
         Session::flash('flash_message', 'Your Entry was successfully updated!');
 
         return redirect(url('trip').'/'.$trip_id.'/entry/'.$entry->id);

@@ -17,11 +17,42 @@ class TripEntry extends Model
 
     protected $dates=['date'];
 
+    /**
+     * stores date attribute as Carbon instance
+     *
+     * @param $date
+     */
     public function setDateAttribute($date){
 
         $this->attributes['date'] = Carbon::parse($date);
 
     }
+
+    /**
+     * create a new TripEntry with Trip_id set
+     *
+     * @param $attr
+     * @param $id
+     * @return static
+     */
+    public static function createWithTripId($attr, $id){
+
+        $attr['trip_id'] = $id;
+        return TripEntry::create($attr);
+
+        }
+
+    /**
+     * stores new featured image-id into db
+     *
+     * @param $pic_id
+     */
+    public function setFeaturedImage($pic_id){
+
+        $this->pic = $pic_id;
+        $this->save();
+
+        }
 
     /**
      * an entry belongs to one user
