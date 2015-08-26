@@ -1,3 +1,8 @@
+<div id="map-canvas"></div>
+
+{!! Form::hidden('lat', null, ['id' => 'lat']) !!}
+{!! Form::hidden('lng', null, ['id' => 'lng']) !!}
+
 <div class="form-group">
     {!! Form::label('name', 'Name of the Trip:') !!}
     <!-- arguments: name, default, additional parameters -->

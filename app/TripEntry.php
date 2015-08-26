@@ -12,7 +12,9 @@ class TripEntry extends Model
         'desc',
         'date',
         'trip_id',
-        'pic'
+        'pic',
+        'lat',
+        'lng'
     ];
 
     protected $dates=['date'];

@@ -34,7 +34,8 @@ class TripEntriesController extends Controller
     {
         $trip = Trip::findOrFail($trip_id);
         if(Auth::user()->id == $trip->user_id){
-            return view('entries.create', compact('trip'));
+            $map = "create";
+            return view('entries.create', compact('trip', 'map'));
         }else{
             return 'You are not the owner of this trip!';
         }
@@ -78,7 +79,8 @@ class TripEntriesController extends Controller
         $entry = TripEntry::findOrFail($entry_id);
         $pics = $entry->pictures()->get();
         $user_id = $trip->user_id;
-        return view('entries.single', compact('entry', 'trip', 'pics', 'user_id'));
+        $map = "single-entry";
+        return view('entries.single', compact('entry', 'trip', 'pics', 'user_id', 'map'));
     }
 
     /**
@@ -94,7 +96,8 @@ class TripEntriesController extends Controller
         $trip = Trip::findOrFail($trip_id);
         $entry = TripEntry::findOrFail($entry_id);
         if(Auth::user()->id == $trip->user_id){
-            return view('entries.edit', compact('entry', 'trip'));
+            $map = "update";
+            return view('entries.edit', compact('entry', 'trip', 'map'));
         }else{
             return 'You are not authorized to edit this entry';
         }
@@ -138,4 +141,11 @@ class TripEntriesController extends Controller
             return 'You are not authorized to delete this entry!';
         }
     }
+
+    public function getMarker($trip_id, $entry_id)
+    {
+        $entry = TripEntry::findOrFail($entry_id);
+
+        return $entry;
+        }
 }

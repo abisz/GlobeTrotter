@@ -26,7 +26,18 @@ class EntryRequest extends Request
         return [
             'name' => 'required',
             'desc' => 'required',
-            'date' => 'required|date'
+            'date' => 'required|date',
+            'lat' => 'required',
+            'lng' => 'required'
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'lat.required' => 'Please select a location on the map',
+            'lng.required' => 'Please select a location on the map',
+        ];
+    }
+
 }

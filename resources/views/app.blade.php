@@ -28,6 +28,25 @@
 <!-- Bootstraps: Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAK6ayjkq66hjsDpFMAPfbSpgK_lc08YFo"></script>
+
+@if( isset($map) )
+    <script src="{{asset('js/Mapster.js')}}"></script>
+    <script src="{{asset('js/map-options.js')}}"></script>
+
+    @if($map == 'create'))
+        <script src="{{asset('js/map-create-script.js')}}"></script>
+    @elseif($map == 'update')
+        <script src="{{asset('js/map-update-script.js')}}"></script>
+    @elseif($map == 'single-entry')
+        <script src="{{asset('js/map-single-entry-script.js')}}"></script>
+    @elseif($map == 'single-trip')
+        <script src="{{asset('js/map-all-script.js')}}"></script>
+    @endif
+
+@endif
+
+
 <script>
     //Slide Up Flash messages
     $('div.alert').delay(3000).slideUp();

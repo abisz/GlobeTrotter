@@ -18,6 +18,8 @@ class CreateTripEntriesTable extends Migration
             $table->string('name');
             $table->text('desc');
             $table->string('pic');
+            $table->double('lat', 13, 10);
+            $table->double('lng', 13, 10);
             $table->timestamp('date');
             $table->timestamps();
 

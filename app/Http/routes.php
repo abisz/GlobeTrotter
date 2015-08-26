@@ -11,19 +11,6 @@
 |
 */
 
-/*
- *
- * TO DO:
- *
- *  google maps
- *      implementation
- *      communication with laravel and forms
- *      saving location in entries
- *  homepage + example trips
- *  design
- *
- */
-
 Route::controllers([
     'auth' => 'Auth\AuthController',
     'password' => 'Auth\PasswordController',
@@ -37,6 +24,7 @@ Route::get('user/{user_id}/delete', ['uses' => 'UserController@destroy', 'middle
 
 //Trips:
 Route::get('trip/{trip_id}', ['uses' => 'TripsController@show', 'as' => 'tripDetail'])->where('trip_id', '[0-9]+');
+Route::post('trip/{trip_id}', ['uses' => 'TripsController@getMarkers'])->where('trip_id', '[0-9]+');
 Route::get('trip/create', ['uses' => 'TripsController@create', 'middleware' => 'auth']);
 Route::post('trip/create', 'TripsController@store');
 Route::get('trip/{trip_id}/edit', ['uses' => 'TripsController@edit', 'middleware' => 'auth'] )->where('trip_id', '[0-9]+');
@@ -47,7 +35,9 @@ Route::get('trip/{trip_id}/delete', ['uses' => 'TripsController@destroy', 'middl
 Route::get('trip/{trip_id}/entry/create', ['uses' => 'TripEntriesController@create', 'middleware' => 'auth'])->where('trip_id', '[0-9]+');
 Route::post('trip/{trip_id}/entry/create', ['uses' => 'TripEntriesController@store'])->where('trip_id', '[0-9]+');
 Route::get('trip/{trip_id}/entry/{entry_id}', ['uses' => 'TripEntriesController@show'])->where(['trip_id' => '[0-9]+', 'entry_id' => '[0-9]+']);
+Route::post('trip/{trip_id}/entry/{entry_id}', ['uses' => 'TripEntriesController@getMarker'])->where(['trip_id' => '[0-9]+', 'entry_id' => '[0-9]+']);
 Route::get('trip/{trip_id}/entry/{entry_id}/edit', ['uses' => 'TripEntriesController@edit', 'middleware' => 'auth'] )->where(['trip_id' => '[0-9]+', 'entry_id' => '[0-9]+']);
+Route::post('trip/{trip_id}/entry/{entry_id}/edit', ['uses' => 'TripEntriesController@getMarker'] )->where(['trip_id' => '[0-9]+', 'entry_id' => '[0-9]+']);
 Route::patch('trip/{trip_id}/entry/{entry_id}/update', ['uses' => 'TripEntriesController@update', 'middleware' => 'auth'] )->where(['trip_id' => '[0-9]+', 'entry_id' => '[0-9]+']);
 Route::get('trip/{trip_id}/entry/{entry_id}/delete', ['uses' => 'TripEntriesController@destroy', 'middleware' => 'auth'])->where(['trip_id' => '[0-9]+', 'entry_id' => '[0-9]+']);
 

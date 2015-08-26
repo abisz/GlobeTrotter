@@ -4,8 +4,7 @@
 
 
 
-    <div class="header-map">
-        <h1>GoogleMaps Implementation</h1>
+    <div id="map-canvas">
     </div>
 
     <h1>{{ $entry->name }}</h1>

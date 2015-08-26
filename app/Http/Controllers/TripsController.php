@@ -73,8 +73,8 @@ class TripsController extends Controller
         $trip = Trip::findOrFail($id);
         $entries = $trip->getEntriesWithPic();
         $user_id = $trip->user_id;
-
-        return view('trips.single', compact('trip', 'entries', 'user_id'));
+        $map = 'single-trip';
+        return view('trips.single', compact('trip', 'entries', 'user_id', 'map'));
     }
 
 
@@ -128,4 +128,20 @@ class TripsController extends Controller
             return 'You are not authorized to delete this trip!';
         }
     }
+
+    public function getMarkers($id){
+        $trip = Trip::findOrFail($id);
+        if($entries = $trip->tripEntries()->get()){
+            foreach ($entries as $entry){
+                $entry['content']= '<a href="'.url('trip').'/'.$trip->id.'/entry/'.$entry->id.'"/>'.$entry->name.'</a><br/><i>'.$entry->date->format('d-m-Y').'</i>';
+            }
+
+            return $entries;
+        }else{
+            return 'no entries';
+        }
+
+
+
+        }
 }

@@ -3,9 +3,7 @@
 @section('content')
 
 
-    <div class="header-map"   >
-        <h1>GoogleMaps Implementation</h1>
-    </div>
+    <div id="map-canvas"></div>
 
     <h1>{{ $trip->name }}</h1>
     <p>{{ $trip->desc }}</p>

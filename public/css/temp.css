@@ -31,13 +31,13 @@ header{
     padding: 3em 0;
 }
 
-.header-trip, .header-map{
+.header-trip{
     background-size: 100%;
     height:400px;
 }
 
-.header-map{
-    background-color: ghostwhite;
+#map-canvas{
+    height: 400px;
 }
 
 .trip, .entry, .picture{
