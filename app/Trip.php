@@ -118,6 +118,23 @@ class Trip extends Model
     }
 
     /**
+     * returns entries with additional content attribute for map implementation
+     * if there are no entries it returns false
+     *
+     * @return mixed
+     */
+    public function getMarkers()
+    {
+        if($entries = $this->tripEntries()->get()){
+            foreach ($entries as $entry){
+                $entry['content']= '<a href="'.url('trip').'/'.$this->id.'/entry/'.$entry->id.'"/>'.$entry->name.'</a><br/><i>'.$entry->date->format('d-m-Y').'</i>';
+            }
+            return $entries;
+        }
+
+        }
+
+    /**
      * a trip belongs to one user
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */

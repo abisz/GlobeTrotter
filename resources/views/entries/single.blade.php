@@ -3,7 +3,7 @@
 @section('content')
 
 
-
+    <input id="pac-input" class="controls" type="text" placeholder="Search Box">
     <div id="map-canvas">
     </div>
 

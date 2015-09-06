@@ -1,9 +1,6 @@
 # TO DO:
 
 google maps
-    different map options
-    start focus
-    geolocation
     suchfeld
     csrf-exception
         trip/trip_id
@@ -14,6 +11,5 @@ next/prev pic buttons
 design
 
 BUGS:
-    mvc-violation: tripsController@getMarkers
-    breadcrumbs: http://globetrotter.dev/trip/1 (active trip is missing)
+    breadcrumbs: problem if next 'layer' doesn't exists yet...
 

@@ -2,14 +2,11 @@
  * Created by Simon on 26.08.15.
  */
 
+(function(window, google, $) {
 
-(function (window, mapster) {
 
-    //map options
-    var options = mapster.MAP_OPTIONS,
-        element = document.getElementById('map-canvas'),
-    //map
-        map = mapster.create(element, options);
+    var $maperizer = $('#map-canvas').maperizer(Maperizer.MAP_OPTIONS_ALL);
+    var first = true;
 
     $.ajax({
         type:'POST',
@@ -17,17 +14,20 @@
     }).done(function(markers){
         markers.forEach(function(marker){
 
-            map.addMarker({
+            if(first){
+                $maperizer.maperizer('setCenter', {
+                    lat: marker.lat,
+                    lng: marker.lng
+                });
+            }
+
+            $maperizer.maperizer('addMarker', {
                 lat: marker.lat,
                 lng: marker.lng,
                 content: marker.content
             });
 
-            console.log(marker);
+            first = false;
         });
     });
-
-
-
-}(window, window.Mapster || (window.Mapster = {})));
-
+}(window, google, jQuery));

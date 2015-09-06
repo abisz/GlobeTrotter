@@ -142,6 +142,13 @@ class TripEntriesController extends Controller
         }
     }
 
+    /**
+     * returns JSON of requested entry
+     *
+     * @param $trip_id
+     * @param $entry_id
+     * @return mixed
+     */
     public function getMarker($trip_id, $entry_id)
     {
         $entry = TripEntry::findOrFail($entry_id);

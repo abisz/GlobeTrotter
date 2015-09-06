@@ -25,27 +25,12 @@
 </div>
 
 <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
 <!-- Bootstraps: Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAK6ayjkq66hjsDpFMAPfbSpgK_lc08YFo"></script>
-
-@if( isset($map) )
-    <script src="{{asset('js/Mapster.js')}}"></script>
-    <script src="{{asset('js/map-options.js')}}"></script>
-
-    @if($map == 'create'))
-        <script src="{{asset('js/map-create-script.js')}}"></script>
-    @elseif($map == 'update')
-        <script src="{{asset('js/map-update-script.js')}}"></script>
-    @elseif($map == 'single-entry')
-        <script src="{{asset('js/map-single-entry-script.js')}}"></script>
-    @elseif($map == 'single-trip')
-        <script src="{{asset('js/map-all-script.js')}}"></script>
-    @endif
-
-@endif
-
+@include('partials.mapscripts')
 
 <script>
     //Slide Up Flash messages

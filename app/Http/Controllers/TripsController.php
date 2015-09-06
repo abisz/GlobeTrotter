@@ -129,16 +129,18 @@ class TripsController extends Controller
         }
     }
 
+    /**
+     * gets entries, prepared for map (with content attribute) and returns them
+     *
+     * @param $id
+     * @return string
+     */
     public function getMarkers($id){
         $trip = Trip::findOrFail($id);
-        if($entries = $trip->tripEntries()->get()){
-            foreach ($entries as $entry){
-                $entry['content']= '<a href="'.url('trip').'/'.$trip->id.'/entry/'.$entry->id.'"/>'.$entry->name.'</a><br/><i>'.$entry->date->format('d-m-Y').'</i>';
-            }
-
-            return $entries;
+        if($entries = $trip->getMarkers()){
+           return $entries;
         }else{
-            return 'no entries';
+            return 'no entries available';
         }
 
 

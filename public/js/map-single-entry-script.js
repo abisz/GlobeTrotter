@@ -1,22 +1,21 @@
 
-(function (window, mapster) {
+(function (window, google, $) {
 
-    //map options
-    var options = mapster.MAP_OPTIONS,
-        element = document.getElementById('map-canvas'),
-    //map
-        map = mapster.create(element, options);
+    var $maperizer = $('#map-canvas').maperizer(Maperizer.MAP_OPTIONS_ZOOM);
 
     $.ajax({
-        type : "POST",
-        url : window.location.href
+        type: "POST",
+        url: window.location.href
     }).done(function(entry){
-        marker = map.addMarker({
+
+        //set center to the entry and add marker
+        $maperizer.maperizer('addFocusedMarker', {
             lat: entry.lat,
             lng: entry.lng
         });
     });
 
-}(window, window.Mapster || (window.Mapster = {})));
+
+}(window, google, jQuery));
 
 

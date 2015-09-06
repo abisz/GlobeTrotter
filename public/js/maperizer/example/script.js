@@ -1,10 +1,14 @@
 (function(window, google, $) {
 
-    //var for laravel
-    var latField = $('input#lat'),
-        lngField = $('input#lng');
 
-    var $maperizer = $('#map-canvas').maperizer(Maperizer.MAP_OPTIONS_GEOLOCATION);
+    /*
+     *  This script is an example of the Maperizer library
+     *  By clicking on the map a marker occurs, the second click will move the marker to the new position.
+     *  This could be used to as a map location input in a form.
+     *
+     */
+
+    var $maperizer = $('#map-canvas').maperizer(Maperizer.MAP_OPTIONS);
 
     $maperizer.maperizer('attachEventsToMap', [{
             name: 'click',
@@ -20,8 +24,6 @@
                     newMarker: true
                 });
 
-                latField.val( event.latLng.G);
-                lngField.val(event.latLng.K);
             }
         }]
     );
@@ -29,4 +31,3 @@
 
 
 }(window, google, jQuery));
-
