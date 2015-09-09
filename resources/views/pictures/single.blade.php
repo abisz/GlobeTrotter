@@ -6,6 +6,14 @@
 
     <img src="{{url()}}/img/{{$trip->user_id}}/{{$pic->filename}}" alt="{{$pic->title}}" class="picture-single"/>
 
+    @if($pic->prev)
+        <a class="btn btn-default" href="{{url()}}/trip/{{$trip->id}}/entry/{{$entry->id}}/picture/{{$pic->prev->id}}"><</a>
+    @endif
+
+    @if($pic->next)
+    <a class="btn btn-default" href="{{url()}}/trip/{{$trip->id}}/entry/{{$entry->id}}/picture/{{$pic->next->id}}">></a>
+    @endif
+
     <p>{{$pic->desc}}</p>
 
     @if( Auth::check() && Auth::user()->id == $trip->user_id)

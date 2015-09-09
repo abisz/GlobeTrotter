@@ -142,8 +142,15 @@ class TripsController extends Controller
         }else{
             return 'no entries available';
         }
+    }
 
+    public function home()
+    {
 
+        $trips = Trip::getRandomTrips(4);
+
+        return view('index', compact('trips'));
 
         }
+
 }

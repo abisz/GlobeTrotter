@@ -12,6 +12,7 @@
 
 <!-- Image Form Input -->
 <div class="form-group">
+    {!! Form::label('image', 'Profil Pic: ') !!}
     {!! Form::file('image', null, ['class' => 'form-control']) !!}
 </div>
 

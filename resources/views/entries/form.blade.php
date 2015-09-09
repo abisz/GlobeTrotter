@@ -5,7 +5,7 @@
 {!! Form::hidden('lng', null, ['id' => 'lng']) !!}
 
 <div class="form-group">
-    {!! Form::label('name', 'Name of the Trip:') !!}
+    {!! Form::label('name', 'Name of the Entry:') !!}
     <!-- arguments: name, default, additional parameters -->
     {!! Form::text('name', null, ['class' => 'form-control']) !!}
 </div>

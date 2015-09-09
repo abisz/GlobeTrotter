@@ -68,13 +68,12 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
         }
 
     /**
-     * Get all Trips from user that allreay started sorted by end-date (desc)
+     * Get all Trips from user that allready started sorted by end-date (desc)
      *
      * @return mixed
      */
     public function getTripsForMyTrips()
     {
-        //get all trips that allready started, sorted by date desc
         $trips = $this->trips()->latest('end')->alreadyStarted()->get();
 
         //retrieving path of featured images

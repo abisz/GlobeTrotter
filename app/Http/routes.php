@@ -50,10 +50,5 @@ Route::patch('trip/{trip_id}/entry/{entry_id}/picture/{pic_id}/update', ['uses' 
 Route::get('trip/{trip_id}/entry/{entry_id}/picture/{pic_id}/delete', ['uses' => 'PicturesController@destroy', 'middleware' => 'auth'])->where(['trip_id' => '[0-9]+', 'entry_id' => '[0-9]+', 'pic_id' => '[0-9]+']);
 
 //homepage
-Route::get('', function(){
-    return view('app');
-});
-
-Route::get('home', function(){
-    return view('app');
-});
+Route::get('', ['uses' => 'TripsController@home']);
+Route::get('home', ['uses' => 'TripsController@home']);

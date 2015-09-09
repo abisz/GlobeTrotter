@@ -94,7 +94,8 @@ class PicturesController extends Controller
     public function show($trip_id, $entry_id, $pic_id)
     {
         $trip = Trip::findOrFail($trip_id);
-        $pic = Picture::findOrFail($pic_id);
+        //$pic = Picture::findOrFail($pic_id);
+        $pic = Picture::getSinglePic($pic_id);
         $entry = TripEntry::findOrFail($entry_id);
         $user_id = $trip->user_id;
         $single_pic = true;

@@ -37,6 +37,30 @@ class Picture extends Model
         return $pic;
     }
 
+    /**
+     * returns Picture with prev and next Picture as attributes for single navigation
+     *
+     * @param $id
+     * @return mixed
+     */
+    public static function getSinglePic($id){
+        $pic = Picture::findOrFail($id);
+        $all = Picture::where('trip_entry_id', $pic->trip_entry_id)->orderBy('id')->get();
+
+        $index = $all->search($pic);
+        $count = $all->count();
+
+        if($index != 0){
+            $prev = $all[$index-1];
+            $pic->prev = $prev;
+        }
+        if($index+1 != $count){
+            $next = $all[$index+1];
+            $pic->next = $next;
+        }
+
+        return $pic;
+    }
 
     /**
      * Save image (and deletes old one if it exists) and updates Picture Object

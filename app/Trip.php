@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
+use App\Picture;
 
 class Trip extends Model
 {
@@ -83,6 +84,42 @@ class Trip extends Model
         $this->save();
 
     }
+
+    /**
+     * Returns Featured Image if set, or false
+     *
+     * @return mixed
+     */
+    public function getFeaturedImage()
+    {
+        if($this->pic){
+            $pic = Picture::findOrFail($this->pic);
+            return $pic;
+        }else{
+            return false;
+        }
+
+    }
+
+    /**
+     * Returns random Trips with featured image filename
+     *
+     * @param $amount
+     * @return mixed
+     */
+    public static function getRandomTrips($amount)
+    {
+        $trips = Trip::all()->random($amount)->shuffle();
+
+        foreach($trips as $trip){
+            if($pic = $trip->getFeaturedImage()){
+                $trip->picName = $pic->filename;
+            }
+        }
+
+        return $trips;
+
+        }
 
     /**
      * create Trip with user id
