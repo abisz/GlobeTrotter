@@ -19,7 +19,8 @@
         </div>
         <a class="pictureContainer" href="{{ url('trip').'/'.$trip->id.'/entry'.'/' . $entry->id . '/picture/create'}}">
 
-                    <h3>Add new Picture!</h3>
+            <h3>Add new Picture!</h3>
+            <img id="addSymbol" src="{{url('img')}}/add.svg"  alt="add new Trip"/>">
 
         </a>
     @endif

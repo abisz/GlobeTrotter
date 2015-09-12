@@ -13,7 +13,7 @@
 
     @foreach($trips as $key => $trip)
         @if ($key != 0)
-            <a href="{{ url('trip') . '/' . $trip->id }}">
+            <a class="pictureContainer" href="{{ url('trip') . '/' . $trip->id }}">
                 <img class="trip" src="{{url('img') . '/' . $trip->user_id . '/' . $trip->picName}}">
                     <h3>{{$trip->name}}</h3>
                     <p class="description">{{$trip->desc}}</p>
