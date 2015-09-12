@@ -3,29 +3,29 @@
 @section('content')
 
     @if (!$trips->isEmpty())
-        <a href="{{ url('trip') . '/' . $trips[0]->id }}">
-            <div class="header-trip" style="background: url( '{{url('img') . '/' . $user_id . '/' . $trips[0]->picName}} ') no-repeat center center;" >
+        <a class="headerContainer" href="{{ url('trip') . '/' . $trips[0]->id }}">
+            <img class="header-trip" src="{{url('img') . '/' . $user_id . '/' . $trips[0]->picName}}" >
                 <h2>{{ $trips[0]->name }}</h2>
-                <p>{{ $trips[0]->desc }}</p>
-            </div>
+                <p class="descriptionHead">{{ $trips[0]->desc }}</p>
+
         </a>
     @endif
 
     @if( Auth::check() && Auth::user()->id == $user_id)
-        <a href="{{url('trip/create')}}">
-            <div class="trip">
+        <a class="pictureContainer" href="{{url('trip/create')}}">
+
                 <h3>Add new Trip!</h3>
-            </div>
+
         </a>
     @endif
 
     @foreach($trips as $key => $trip)
         @if ($key != 0)
             <a href="{{ url('trip') . '/' . $trip->id }}">
-                <div class="trip" style="background: url( '{{url('img') . '/' . $user_id . '/' . $trip->picName}} ') no-repeat center center;">
+                <img class="trip" src="{{url('img') . '/' . $user_id . '/' . $trip->picName}}">
                     <h3>{{$trip->name}}</h3>
-                    <p>{{$trip->desc}}</p>
-                </div>
+                    <p class="description">{{$trip->desc}}</p>
+
             </a>
         @endif
     @endforeach

@@ -1,0 +1,177 @@
+body{
+    background-color: #fefdf3;
+
+}
+
+header{
+    height: 150px;
+    padding:2rem;
+}
+
+.logo img{
+    height:100px;
+    float:left;
+
+}
+
+.user{
+    float:right;
+}
+
+.user img{
+    float:right;
+    border-radius: 50%;
+    height:100px;
+    width:100px;
+}
+
+.user .name{
+    float:right;
+    object-fit: cover;
+    margin-left:2em;
+    padding: 3em 0;
+}
+
+.header-trip{
+    background-size: 100%;
+    height:400px;
+}
+
+#map-canvas{
+    height: 400px;
+}
+
+#pac-input {
+    background-color: #fff;
+    font-size: 15px;
+    font-weight: 300;
+    margin-left: 12px;
+    padding: 0 11px 0 13px;
+    text-overflow: ellipsis;
+    width: 400px;
+
+}
+
+#pac-input:focus {
+    border-color: #4d90fe;
+}
+
+
+
+.picture-single{
+    margin:0 auto;
+    display:block;
+    max-width:80%;
+    height:auto;
+}
+
+.picture-edit{
+    margin:0 auto;
+    display:block;
+    max-width: 500px;
+    height:auto;
+}
+
+h2{
+    z-index: 200;
+    position: absolute;
+    padding-left: 2%;
+    padding-right: 2%;
+    color: #ffffff;
+    text-shadow: 2px 2px 8px #1e1f25;
+}
+
+h3{
+    z-index: 200;
+    position: absolute;
+    padding-left: 5%;
+    padding-right: 5%;
+    color: #ffffff;
+    text-shadow: 2px 2px 8px #1e1f25;
+}
+
+.headerContainer{
+    display: block;
+    float: left;
+    z-index: 50;
+    width: 100%;
+    height: 400px;
+    max-height: 400px;
+    overflow: hidden;
+    position: relative;
+}
+
+.header-trip{
+    position:relative;
+    z-index: 75;
+    object-fit: cover;
+    overflow:hidden;
+    width:100%;
+    height: 100%;
+    max-height: 400px;
+    float: left;
+    clear: both;
+}
+
+.pictureContainer{
+    display: block;
+    float: left;
+    z-index: 50;
+
+    background-color: #61676f;
+    height:300px;
+    width: 300px;
+    max-width:300px;
+    max-height:300px;
+    min-width: 100px;
+    overflow:hidden;
+    margin: 2em 2em 0 0;
+    position: relative;
+}
+
+
+
+.picture, .entry, .trip{
+    position:relative;
+    z-index: 75;
+    object-fit: cover;
+    overflow:hidden;
+    min-width: 300px;
+    max-height: 300px;
+    float: left;
+    clear: both;
+
+}
+
+.description {
+    position: absolute;
+    z-index:100;
+    color: white;
+    padding-right: 5%;
+    padding-left: 5%;
+    bottom: 0px;
+    background: rgb(0, 0, 0); /* fallback color */
+    background: rgba(0, 0, 0, 0.7);
+}
+
+.descriptionHead{
+    font-size: medium;
+    position: absolute;
+    z-index:100;
+    color: white;
+    padding-right: 2%;
+    padding-left: 2%;
+    bottom: 200px;
+    padding-bottom:1%;
+    background: rgb(0, 0, 0); /* fallback color */
+    background: rgba(0, 0, 0, 0.7);
+
+
+}
+
+
+.btnContainer{
+    width: 100%;
+}
+
+.profilePic

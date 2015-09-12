@@ -10,7 +10,7 @@
                 @if (File::exists('img/'.Auth::user()->id.'/profile-pic.jpg'))
                     <img src="{{url('img')}}/{{Auth::user()->id}}/profile-pic.jpg" alt="profile Picture"/>
                 @else
-                    <img src="{{url('img')}}/profile-pic.jpg" alt="profile Picture"/>
+                    <img src="{{url('img')}}/profile-pic-default.jpg" alt="profile Picture"/>
                 @endif
             </a>
 
