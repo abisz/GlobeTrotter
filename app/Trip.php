@@ -102,14 +102,18 @@ class Trip extends Model
     }
 
     /**
-     * Returns random Trips with featured image filename
+     * Returns random Trips with featured image filename, if there are less than the required trips available, it will return everything there is
      *
      * @param $amount
      * @return mixed
      */
     public static function getRandomTrips($amount)
     {
-        $trips = Trip::all()->random($amount)->shuffle();
+        $tripsAll = Trip::all();
+        $count = $tripsAll->count();
+        if($count < $amount) $amount = $count;
+
+        $trips = $tripsAll->random($amount)->shuffle();
 
         foreach($trips as $trip){
             if($pic = $trip->getFeaturedImage()){
