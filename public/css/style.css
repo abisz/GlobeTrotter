@@ -11,6 +11,8 @@ header{
 .logo img{
     height:100px;
     float:left;
+    margin: -30px;
+    margin-top: -15px;
 
 }
 
@@ -109,8 +111,8 @@ h3{
 
 .pictureContainer{
     display: block;
-    float: left;
-    z-index: 50;
+    float:left;
+    z-index: 100;
 
     background-color: #61676f;
     height:300px;
@@ -121,6 +123,7 @@ h3{
     overflow:hidden;
     margin: 2em 2em 0 0;
     position: relative;
+    margin-left: 43px;
 }
 
 
@@ -174,3 +177,18 @@ h3{
     width: 30%;
     height: 30%;
 }
+
+.container{
+
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: 50px;
+}
+
+.form-control{
+    width:50%;
+}
+
+
