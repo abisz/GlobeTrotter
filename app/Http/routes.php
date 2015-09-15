@@ -19,7 +19,7 @@ Route::controllers([
 //User:
 Route::get('user/{user_id}', ['uses' => 'TripsController@showAllTrips', 'as' => 'myTrips'])->where('user_id', '[0-9]+');
 Route::get('user/{user_id}/edit', ['uses' => 'UserController@edit', 'middleware' => 'auth'])->where('user_id', '[0-9]+');
-Route::patch('user/{user_id}/update', ['uses' => 'UserController@update'])->where('user_id', '[0-9]+');
+Route::patch('user/{user_id}/update', ['uses' => 'UserController@update', 'middleware' => 'auth'])->where('user_id', '[0-9]+');
 Route::get('user/{user_id}/delete', ['uses' => 'UserController@destroy', 'middleware' => 'auth'])->where('user_id', '[0-9]+');
 
 //Trips:

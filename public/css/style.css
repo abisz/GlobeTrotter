@@ -27,6 +27,10 @@ header{
     width:100px;
 }
 
+.user a{
+    display: inline-block;
+}
+
 .user .name{
     float:right;
     object-fit: cover;
